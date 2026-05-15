@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EKER Haddecilik</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#0d0d0d;
+color:white;
+overflow-x:hidden;
+}
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#d50017;
+border-radius:20px;
+}
+
+.top-ticker{
+width:100%;
+background:#d50017;
+color:#fff;
+overflow:hidden;
+white-space:nowrap;
+font-weight:800;
+letter-spacing:1px;
+padding:10px 0;
+position:fixed;
+top:0;
+z-index:2000;
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.top-ticker div{
+display:inline-block;
+padding-left:100%;
+animation:ticker 20s linear infinite;
+}
+
+@keyframes ticker{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
+}
+
+header{
+position:fixed;
+top:42px;
+left:0;
+width:100%;
+z-index:1500;
+background:rgba(0,0,0,.72);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.navbar{
+max-width:1350px;
+margin:auto;
+padding:18px 25px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.logo img{
+width:72px;
+}
+
+.logo h1{
+font-size:23px;
+font-weight:900;
+letter-spacing:2px;
+}
+
+.logo span{
+color:#ff2233;
+}
+
+.menu{
+display:flex;
+gap:28px;
+}
+
+.menu a{
+color:#ddd;
+font-weight:700;
+text-decoration:none;
+transition:.3s;
+}
+
+.menu a:hover{
+color:#ff2233;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:180px 7% 80px;
+background:
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.85)),
+url('urun_68_935920080.jpeg') center/cover no-repeat;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+width:600px;
+height:600px;
+background:#d50017;
+filter:blur(180px);
+opacity:.2;
+right:-200px;
+top:-100px;
+border-radius:50%;
+}
+
+.hero-content{
+max-width:760px;
+position:relative;
+z-index:2;
+animation:fadeUp 1.1s ease;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.hero-content h2{
+font-size:68px;
+font-weight:900;
+line-height:1.1;
+margin-bottom:25px;
+}
+
+.hero-content h2 span{
+color:#ff2233;
+}
+
+.hero-content p{
+font-size:18px;
+line-height:1.9;
+color:#ddd;
+margin-bottom:35px;
+}
+
+.buttons{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:16px 34px;
+border-radius:50px;
+font-weight:800;
+text-decoration:none;
+transition:.4s;
+}
+
+.btn-red{
+background:#d50017;
+color:white;
+box-shadow:0 15px 35px rgba(213,0,23,.35);
+}
+
+.btn-red:hover{
+transform:translateY(-5px);
+}
+
+.btn-dark{
+border:1px solid #777;
+color:white;
+}
+
+.btn-dark:hover{
+background:white;
+color:black;
+}
+
+.section{
+padding:110px 7%;
+}
+
+.title{
+text-align:center;
+margin-bottom:65px;
+}
+
+.title h3{
+font-size:48px;
+font-weight:900;
+margin-bottom:12px;
+}
+
+.title p{
+color:#bbb;
+font-size:17px;
+}
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.about-image{
+height:500px;
+border-radius:35px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+.about-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.about-text{
+background:#171717;
+padding:45px;
+border-radius:35px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.about-text h4{
+font-size:38px;
+margin-bottom:20px;
+font-weight:900;
+}
+
+.about-text h4 span{
+color:#ff2233;
+}
+
+.about-text p{
+line-height:2;
+color:#d7d7d7;
+margin-bottom:18px;
+}
+
+.products{
+background:#151515;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:28px;
+}
+
+.card{
+background:#1b1b1b;
+border-radius:30px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:#d50017;
+}
+
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
+}
+
+.card-content{
+padding:28px;
+}
+
+.card-content h4{
+font-size:28px;
+margin-bottom:15px;
+font-weight:800;
+}
+
+.card-content p{
+line-height:1.8;
+color:#d3d3d3;
+margin-bottom:15px;
+}
+
+details{
+background:#121212;
+padding:15px;
+border-radius:15px;
+}
+
+summary{
+cursor:pointer;
+font-weight:700;
+color:#ff2233;
+margin-bottom:10px;
+}
+
+.banner{
+margin-top:90px;
+padding:90px 60px;
+border-radius:40px;
+background:
+linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.80)),
+url('silme-demiri.jpg') center/cover no-repeat;
+position:relative;
+overflow:hidden;
+}
+
+.banner::after{
+content:'';
+position:absolute;
+width:400px;
+height:400px;
+background:#d50017;
+filter:blur(180px);
+right:-150px;
+bottom:-100px;
+opacity:.25;
+}
+
+.banner h2{
+font-size:55px;
+font-weight:900;
+margin-bottom:20px;
+position:relative;
+z-index:2;
+}
+
+.banner p{
+max-width:700px;
+line-height:1.9;
+color:#ddd;
+position:relative;
+z-index:2;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-top:60px;
+}
+
+.gallery img{
+width:100%;
+height:230px;
+object-fit:cover;
+border-radius:24px;
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.04);
+}
+
+.contact{
+background:#131313;
+border-radius:40px;
+padding:60px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-top:90px;
+}
+
+.contact-box{
+background:#1b1b1b;
+padding:40px;
+border-radius:30px;
+}
+
+.contact-box h3{
+font-size:36px;
+margin-bottom:25px;
+}
+
+.contact-box p{
+line-height:2;
+font-size:17px;
+color:#ddd;
+}
+
+iframe{
+width:100%;
+height:100%;
+min-height:350px;
+border:none;
+border-radius:30px;
+}
+
+footer{
+padding:30px;
+text-align:center;
+background:#080808;
+color:#9d9d9d;
+margin-top:90px;
+}
+
+.call{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#d50017;
+color:white;
+padding:16px 24px;
+border-radius:50px;
+font-weight:900;
+text-decoration:none;
+z-index:3000;
+box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+
+@media(max-width:1150px){
+
+.cards{
+grid-template-columns:1fr 1fr;
+}
+
+.gallery{
+grid-template-columns:1fr 1fr;
+}
+
+.contact{
+grid-template-columns:1fr;
+}
+
+.about{
+grid-template-columns:1fr;
+}
+
+.hero-content h2{
+font-size:52px;
+}
+
+}
+
+@media(max-width:760px){
+
+.menu{
+display:none;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.hero-content h2{
+font-size:38px;
+}
+
+.hero{
+padding-top:210px;
+}
+
+.banner{
+padding:60px 30px;
+}
+
+.banner h2{
+font-size:38px;
+}
+
+.contact{
+padding:25px;
+}
+
+.logo h1{
+font-size:18px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="top-ticker">
+<div>
+EKER HADDECİLİK • KÖŞEBENT • LAMA • SİLME DEMİRİ • NERVÜRLÜ İNŞAAT DEMİRİ • GÜVENİLİR TEDARİK • PROFESYONEL HİZMET •
+</div>
+</div>
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+<img src="logo.png">
+<h1>EKER <span>HADDECİLİK</span></h1>
+</div>
+
+<div class="menu">
+<a href="#">Anasayfa</a>
+<a href="#">Kurumsal</a>
+<a href="#">Ürünler</a>
+<a href="#">Galeri</a>
+<a href="#">İletişim</a>
+</div>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h2>
+Güçlü Çelik <br>
+<span>Profesyonel Haddecilik</span>
+</h2>
+
+<p>
+EKER Haddecilik; köşebent, lama, silme demiri ve nervürlü inşaat demiri satışında kaliteli ürün ve güvenilir hizmet anlayışıyla faaliyet göstermektedir.
+</p>
+
+<div class="buttons">
+<a href="#urunler" class="btn btn-red">Ürünleri İncele</a>
+<a href="#iletisim" class="btn btn-dark">İletişime Geç</a>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="title">
+<h3>Kurumsal Yapı</h3>
+<p>Güvenilir tedarik, kaliteli ürün, profesyonel hizmet.</p>
+</div>
+
+<div class="about">
+
+<div class="about-image">
+<img src="silme-demiri.jpg">
+</div>
+
+<div class="about-text">
+
+<h4>EKER <span>HADDECİLİK</span></h4>
+
+<p>
+EKER Haddecilik; sanayi, yapı ve inşaat sektörüne yönelik kaliteli demir ve çelik ürünleri sunmaktadır.
+</p>
+
+<p>
+Kaliteli ürün anlayışı, hızlı iletişim ve güvenilir tedarik sistemiyle profesyonel hizmet sağlamaktadır.
+</p>
+
+<p>
+Köşebent, lama, silme demiri ve nervürlü inşaat demiri ürün gruplarında güçlü stok ve kaliteli çözümler sunulmaktadır.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section products" id="urunler">
+
+<div class="title">
+<h3>Ürün Grupları</h3>
+<p>Profesyonel çelik ve demir çözümleri</p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="kosebent-demiri.jpg">
+
+<div class="card-content">
+
+<h4>Köşebent</h4>
+
+<p>
+Sanayi, yapı ve çelik konstrüksiyon alanlarında kullanılan dayanıklı köşebent ürünleri.
+</p>
+
+<details>
+<summary>Detaylı Bilgi</summary>
+<p>
+Köşebent ürünlerinde proje ihtiyacına göre farklı ölçü, kalınlık ve boy seçenekleri sunulur. İsteğe özel üretim ve toplu tedarik için iletişime geçebilirsiniz.
+</p>
+</details>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="silme-demiri.jpg">
+
+<div class="card-content">
+
+<h4>Lama & Silme Demiri</h4>
+
+<p>
+Farklı ölçülerde dayanıklı lama ve silme demiri ürün çözümleri sunulmaktadır.
+</p>
+
+<details>
+<summary>Detaylı Bilgi</summary>
+<p>
+Lama ve silme demiri ürünleri; sanayi üretimi, makine imalatı, kaynak uygulamaları ve metal işlerinde kullanılmaktadır. İsteğe özel ölçü ve üretim seçenekleri sunulmaktadır.
+</p>
+</details>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="nervurlu-demir-5839742593.jpg">
+
+<div class="card-content">
+
+<h4>Nervürlü İnşaat Demiri</h4>
+
+<p>
+Yüksek dayanımlı nervürlü inşaat demiri ürünleri ile güvenilir yapı çözümleri.
+</p>
+
+<details>
+<summary>Detaylı Bilgi</summary>
+<p>
+Nervürlü inşaat demiri; betonarme yapılarda yüksek dayanım sağlar. Farklı çap ve ölçülerde ürün tedariği yapılmakta olup isteğe özel sipariş alınabilmektedir.
+</p>
+</details>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="banner">
+
+<h2>
+Kaliteli Demir ve <br>
+Çelik Çözümleri
+</h2>
+
+<p>
+EKER Haddecilik; kaliteli ürün, güvenilir tedarik ve profesyonel hizmet anlayışıyla çelik sektöründe faaliyet göstermektedir.
+</p>
+
+</div>
+
+<div class="gallery">
+
+<img src="kosebent-demiri.jpg">
+<img src="silme-demiri.jpg">
+<img src="nervurlu-demir-5839742593.jpg">
+<img src="urun_68_935920080.jpeg">
+
+</div>
+
+<div class="contact" id="iletisim">
+
+<div class="contact-box">
+
+<h3>İletişim Bilgileri</h3>
+
+<p>
+<b>Adres:</b><br>
+Karşı OSB, Payas Endüstri Meslek Lisesi, 31900 Payas / Dörtyol / Hatay
+</p>
+
+<br>
+
+<p>
+<b>Telefon:</b><br>
+(0326) 755 55 10
+</p>
+
+<br><br>
+
+<a href="tel:+903267555510" class="btn btn-red">
+Hemen Ara
+</a>
+
+</div>
+
+<div>
+
+<iframe src="https://www.google.com/maps?q=Karşı%20OSB%20Payas%20Endüstri%20Meslek%20Lisesi%20Hatay&output=embed"></iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 EKER HADDECİLİK — TÜM HAKLARI SAKLIDIR
+</footer>
+
+<a class="call" href="tel:+903267555510">
+Ara
+</a>
+
+</body>
+</html>
